@@ -1,0 +1,20 @@
+ul {
+ background-color: #93B7BE;
+ backdrop-filter: blur(12px);
+ border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+ 
+}
+ul a {
+    color: black;
+    padding: 8px 15px;
+    border-radius: 10px;
+    /* position: relative; */
+    transition: 0.3s;
+}
+ul a:hover {
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    border-radius: 24px;
+    background-color: #454545;
+    box-shadow: 0 0 10px #F1FFFA, 0 0 20px #F1FFFA;
+}
