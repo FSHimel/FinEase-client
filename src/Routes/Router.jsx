@@ -17,7 +17,9 @@ const router = createBrowserRouter([
         index: true,
         Component: Home,
         loader: async () => {
-          const res = await fetch("http://localhost:3000/summary");
+          const res = await fetch(
+            "https://fineaseserver-sooty.vercel.app/summary",
+          );
           return res.json();
         },
       },

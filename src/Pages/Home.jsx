@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router";
 import Hero from "../Components/Hero";
 
 const Home = () => {
-  const summaryData = useLoaderData();
+  const summaryData = useLoaderData() || {};
   const { balance, income, expenses } = summaryData;
   return (
     <div>
