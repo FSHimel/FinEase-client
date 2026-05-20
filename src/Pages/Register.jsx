@@ -99,7 +99,9 @@ const Register = () => {
                       {show ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
                     </span>
                   </div>
-                  <button className="btn btn-neutral mt-4">Register</button>
+                  <button className="btn border-0 bg-[#93B7BE] mt-4">
+                    Register
+                  </button>
                   <p>
                     Already have an account? Please{" "}
                     <Link
@@ -115,7 +117,7 @@ const Register = () => {
               {/* Google login  */}
               <button
                 onClick={handleGoogleSingIn}
-                className="btn bg-white text-black border-[#e5e5e5]"
+                className="btn bg-[#93B7BE] border-0 text-black"
               >
                 <svg
                   aria-label="Google logo"

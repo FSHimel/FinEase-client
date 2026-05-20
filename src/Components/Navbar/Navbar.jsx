@@ -22,7 +22,7 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="navbar mt-5 w-11/12 mx-auto">
+    <div className="navbar mt-5 w-11/12 mx-auto sticky top-0 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -49,7 +49,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link to={"/"} className="text-3xl font-black">
+        <Link to={"/"} className="text-3xl font-black text-[#CF9893]">
           FinEase
         </Link>
       </div>
@@ -92,7 +92,7 @@ const Navbar = () => {
               </ul>
             </div>
           ) : (
-            <div className="flex gap-3 md:gap-10 ">
+            <div className="flex md:gap-10 ">
               <Link to="/login">Login</Link>
 
               <Link to="/signup">Signup</Link>

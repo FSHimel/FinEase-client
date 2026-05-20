@@ -65,7 +65,9 @@ const Login = () => {
                     <a className="link link-hover">Forgot password?</a>
                   </div>
 
-                  <button className="btn btn-neutral mt-4">Login</button>
+                  <button className="btn bg-[#93B7BE] border-0 mt-4">
+                    Login
+                  </button>
                   <p>
                     Don't have an account? Please{" "}
                     <Link
@@ -80,7 +82,7 @@ const Login = () => {
               {/* Google login  */}
               <button
                 onClick={handleGoogleSingIn}
-                className="btn bg-white text-black border-[#e5e5e5]"
+                className="btn bg-[#93B7BE] text-black border-0"
               >
                 <svg
                   aria-label="Google logo"
