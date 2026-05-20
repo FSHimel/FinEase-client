@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import "./Navbar.css";
 import { use } from "react";
 import AuthContext from "../../Firebase/AuthContext";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
@@ -16,7 +17,9 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then()
+      .then(() => {
+        Swal.fire("Logged out!");
+      })
       .catch((err) => {
         console.log(err);
       });

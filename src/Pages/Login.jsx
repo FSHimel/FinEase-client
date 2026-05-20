@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { use, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import AuthContext from "../Firebase/AuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { signInUser, googleSignIn } = use(AuthContext);
@@ -15,6 +16,13 @@ const Login = () => {
     signInUser(email, password)
       .then(() => {
         e.target.reset();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Logged in successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate(location.state || "/");
       })
       .catch((err) => {
@@ -24,6 +32,13 @@ const Login = () => {
   const handleGoogleSingIn = () => {
     googleSignIn()
       .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Logged in successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate(location.state || "/");
       })
       .catch((err) => console.log(err));
