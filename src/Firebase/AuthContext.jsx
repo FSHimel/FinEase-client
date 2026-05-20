@@ -1,4 +1,5 @@
-import { createContext } from "react-router";
+import { createContext } from "react";
+
 
 const AuthContext = createContext();
 

@@ -8,8 +8,8 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../Firebase/firebase.init";
-import AuthContext from "../Firebase/AuthContext";
 import { useEffect, useState } from "react";
+import AuthContext from "../Firebase/AuthContext";
 
 const AuthProvider = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
@@ -54,7 +54,9 @@ const AuthProvider = ({ children }) => {
     loading,
     setLoading,
   };
-  return <AuthContext value={authData}>{children}</AuthContext>;
+  return (
+    <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;

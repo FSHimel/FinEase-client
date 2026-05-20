@@ -1,21 +1,26 @@
 import { Link } from "react-router";
 import "./Navbar.css";
+import { use } from "react";
+import AuthContext from "../../Firebase/AuthContext";
 
-{
-  /* <nav className="flex justify-center gap-10 mt-10 p-2 w-fit rounded-3xl mx-auto">
-  <Link href="#">Home</Link>
-  <Link href="#">Services</Link>
-  <Link href="#">About us</Link>
-</nav> */
-}
 const Navbar = () => {
+  const { user, logOut } = use(AuthContext);
   const links = (
     <>
       <Link to={"/"}>Home</Link>
-      <Link to={"/"}>Home</Link>
-      <Link to={"/"}>Home</Link>
+      <Link to={"/add-transaction"}>Add Transaction</Link>
+      <Link to={"/my-transactions"}>My Transactions</Link>
+      <Link to={"/reports"}>Reports</Link>
     </>
   );
+
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="navbar mt-5 w-11/12 mx-auto">
       <div className="navbar-start">
@@ -53,8 +58,47 @@ const Navbar = () => {
           {links}
         </ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+      <div className="navbar-end ">
+        <ul className="w-fit p-2 rounded-3xl">
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img src={user.photoURL} alt="user" />
+                </div>
+              </div>
+
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box  mt-3 w-52 p-2 shadow"
+              >
+                <li className="pointer-events-none font-semibold">
+                  {user.displayName}
+                </li>
+
+                <li className="pointer-events-none text-sm text-gray-500">
+                  {user.email}
+                </li>
+
+                <li className="mt-2 ">
+                  <Link onClick={handleLogOut} to={"/"} className="text-xl">
+                    Log out
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <div className="flex gap-3 md:gap-10 ">
+              <Link to="/login">Login</Link>
+
+              <Link to="/signup">Signup</Link>
+            </div>
+          )}
+        </ul>
       </div>
     </div>
   );
