@@ -3,7 +3,7 @@ import bannerImg from "../assets/banner.png";
 const Hero = () => {
   return (
     <section
-      className="h-screen bg-cover bg-center flex items-center justify-center px-6 my-10"
+      className="h-150 bg-cover bg-center flex items-center justify-center px-6 my-5"
       style={{
         backgroundImage: `url(${bannerImg})`,
       }}
