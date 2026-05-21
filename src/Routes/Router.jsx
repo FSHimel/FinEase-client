@@ -7,11 +7,13 @@ import MyTransactions from "../Pages/MyTransactions";
 import Reports from "../Pages/Reports";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import Error from "../Pages/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
+    errorElement: <Error></Error>,
     children: [
       {
         index: true,
