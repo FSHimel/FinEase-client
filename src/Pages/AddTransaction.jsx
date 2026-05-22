@@ -1,12 +1,8 @@
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import AuthContext from "../Firebase/AuthContext";
+import Swal from "sweetalert2";
 
 const AddTransaction = () => {
-  const transactionPromise = fetch(
-    "https://fineaseserver-sooty.vercel.app/transactions",
-  ).then((res) => res.json());
-  const initialTransactions = use(transactionPromise);
-  const [transaction, setTransaction] = useState(initialTransactions);
   const { user } = use(AuthContext);
 
   const handleAddTransaction = (e) => {
@@ -22,7 +18,7 @@ const AddTransaction = () => {
       name: user?.displayName,
     };
 
-    fetch(``, {
+    fetch(`https://fineaseserver-sooty.vercel.app/transactions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,12 +27,25 @@ const AddTransaction = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Transaction added",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          console.log("Error");
+        }
       });
   };
   return (
     <div>
-      <form className="space-y-4 w-8/12 mx-auto ">
+      <form
+        onSubmit={handleAddTransaction}
+        className="space-y-4 w-8/12 mx-auto "
+      >
         {/* Type */}
         <div>
           <label className=" mb-1 font-medium">Type</label>
