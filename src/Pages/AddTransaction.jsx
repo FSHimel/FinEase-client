@@ -35,6 +35,7 @@ const AddTransaction = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          e.target.reset();
         } else {
           console.log("Error");
         }
