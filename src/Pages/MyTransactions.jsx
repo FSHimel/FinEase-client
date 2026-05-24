@@ -24,11 +24,14 @@ const MyTransactions = () => {
       method: "DELETE",
     })
       .then((res) => res.json())
-      .then(() => {
-        const remainingTransactions = transactions.filter(
-          (transaction) => transaction._id !== id,
-        );
-        setTransactions(remainingTransactions);
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          const remainingTransactions = transactions.filter(
+            (transaction) => transaction._id !== id,
+          );
+
+          setTransactions(remainingTransactions);
+        }
       });
   };
 
