@@ -21,10 +21,10 @@ const MyTransactions = () => {
 
   const handleDeletTransaction = (id) => {
     fetch(`https://fin-ease-server-pi.vercel.app/transactions/${id}`, {
-      method: "DELET",
+      method: "DELETE",
     })
       .then((res) => res.json())
-      .then((data) => {
+      .then(() => {
         const remainingTransactions = transactions.filter(
           (transaction) => transaction._id !== id,
         );
