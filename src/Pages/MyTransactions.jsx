@@ -10,7 +10,7 @@ const MyTransactions = () => {
   useEffect(() => {
     if (user?.email) {
       fetch(
-        `https://fineaseserver-sooty.vercel.app/transactions?email=${user.email}`,
+        `https://fin-ease-server-pi.vercel.app/transactions?email=${user.email}`,
       )
         .then((res) => res.json())
         .then((data) => {

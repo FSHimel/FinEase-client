@@ -18,7 +18,7 @@ const AddTransaction = () => {
       name: user?.displayName,
     };
 
-    fetch(`https://fineaseserver-sooty.vercel.app/transactions`, {
+    fetch(`https://fin-ease-server-pi.vercel.app/transactions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
