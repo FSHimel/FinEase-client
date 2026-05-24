@@ -20,7 +20,7 @@ const router = createBrowserRouter([
         Component: Home,
         loader: async () => {
           const res = await fetch(
-            "https://fineaseserver-sooty.vercel.app/summary",
+            "https://fin-ease-server-pi.vercel.app/summary",
           );
           return res.json();
         },
