@@ -14,11 +14,23 @@ const MyTransactions = () => {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           setTransactions(data);
         });
     }
   }, [user]);
+
+  const handleDeletTransaction = (id) => {
+    fetch(`https://fin-ease-server-pi.vercel.app/transactions/${id}`, {
+      method: "DELET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const remainingTransactions = transactions.filter(
+          (transaction) => transaction._id !== id,
+        );
+        setTransactions(remainingTransactions);
+      });
+  };
 
   return (
     <div className="w-11/12 mx-auto">
@@ -56,7 +68,12 @@ const MyTransactions = () => {
                 <button className="btn btn-sm btn-warning">Update</button>
               </Link>
 
-              <button className="btn btn-sm btn-error">Delete</button>
+              <button
+                onClick={() => handleDeletTransaction(transaction._id)}
+                className="btn btn-sm btn-error"
+              >
+                Delete
+              </button>
 
               <Link to={`/transactions/${transaction._id}`}>
                 <button className="btn btn-sm btn-info">View Details</button>
