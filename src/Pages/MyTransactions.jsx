@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../Firebase/AuthContext";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 const MyTransactions = () => {
   const { user } = useContext(AuthContext);
@@ -20,9 +21,22 @@ const MyTransactions = () => {
   }, [user]);
 
   const handleDeletTransaction = (id) => {
-    fetch(`https://fin-ease-server-pi.vercel.app/transactions/${id}`, {
-      method: "DELETE",
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
     })
+      .then((result) => {
+        if (result.isConfirmed) {
+          fetch(`https://fin-ease-server-pi.vercel.app/transactions/${id}`, {
+            method: "DELETE",
+          });
+        }
+      })
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
