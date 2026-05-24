@@ -29,24 +29,28 @@ const MyTransactions = () => {
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
       confirmButtonText: "Yes, delete it!",
-    })
-      .then((result) => {
-        if (result.isConfirmed) {
-          fetch(`https://fin-ease-server-pi.vercel.app/transactions/${id}`, {
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await fetch(
+          `https://fin-ease-server-pi.vercel.app/transactions/${id}`,
+          {
             method: "DELETE",
-          });
-        }
-      })
-      .then((res) => res.json())
-      .then((data) => {
+          },
+        );
+
+        const data = await res.json();
+
         if (data.deletedCount > 0) {
           const remainingTransactions = transactions.filter(
             (transaction) => transaction._id !== id,
           );
 
           setTransactions(remainingTransactions);
+
+          Swal.fire("Transaction has been deleted.");
         }
-      });
+      }
+    });
   };
 
   return (
