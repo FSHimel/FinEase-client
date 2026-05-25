@@ -39,13 +39,25 @@ const Footer = () => {
 
             {/* Social Media */}
             <div className="flex gap-4 mt-4">
-              <a href="#" className="hover:text-blue-500">
+              <a
+                href="https://www.facebook.com/fshimel304"
+                target="_blank"
+                className="hover:text-blue-500"
+              >
                 Facebook
               </a>
-              <a href="#" className="hover:text-sky-400">
+              <a
+                href="https://x.com/FS_Himel"
+                target="_blank"
+                className="hover:text-sky-400"
+              >
                 Twitter
               </a>
-              <a href="#" className="hover:text-pink-500">
+              <a
+                href="https://www.instagram.com/fshimel_here/"
+                target="_blank"
+                className="hover:text-pink-500"
+              >
                 Instagram
               </a>
             </div>
