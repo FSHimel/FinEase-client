@@ -303,7 +303,6 @@ const MyTransactions = () => {
           </div>
         </form>
       </dialog>
-      ;
     </div>
   );
 };
