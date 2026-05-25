@@ -14,7 +14,7 @@ const Home = () => {
         });
     }
   }, [user]);
-  const { balance, income, expenses } = transactions;
+  const { balance, income, expense } = transactions;
   return (
     <div>
       <Hero></Hero>
@@ -39,7 +39,7 @@ const Home = () => {
           {/* Expenses */}
           <div className="p-6 rounded-2xl shadow-md bg-[#785964] text-white text-center">
             <h3 className="text-lg font-semibold">Total Expenses</h3>
-            <p className="text-3xl font-bold mt-4">${expenses}</p>
+            <p className="text-3xl font-bold mt-4">${expense}</p>
           </div>
         </div>
       </section>
