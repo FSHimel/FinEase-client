@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const Footer = () => {
   return (
     <div>
@@ -24,14 +26,14 @@ const Footer = () => {
 
             <div className="space-y-2">
               <li>
-                <a href="/terms" className="hover:text-white">
+                <Link to={"/terms&condition"} className="hover:text-white">
                   Terms & Conditions
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/privacy" className="hover:text-white">
+                <Link to={"/privacy"} className="hover:text-white">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
             </div>
 

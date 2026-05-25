@@ -10,6 +10,8 @@ import Register from "../Pages/Register";
 import Error from "../Pages/Error";
 import MyProfile from "../Pages/MyProfile";
 import ViewDetails from "../Pages/ViewDetails";
+import Terms from "../Pages/Terms";
+import Privacy from "../Pages/Privacy";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
       {
         path: "login",
         Component: Login,
+      },
+      {
+        path: "terms&condition",
+        Component: Terms,
+      },
+      {
+        path: "privacy",
+        Component: Privacy,
       },
       {
         path: "add-transaction",
