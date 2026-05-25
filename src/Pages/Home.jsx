@@ -1,9 +1,20 @@
-import { useLoaderData } from "react-router";
 import Hero from "../Components/Hero";
+import { use, useEffect, useState } from "react";
+import AuthContext from "../Firebase/AuthContext";
 
 const Home = () => {
-  const summaryData = useLoaderData() || {};
-  const { balance, income, expenses } = summaryData;
+  const { user } = use(AuthContext);
+  const [transactions, setTransactions] = useState([]);
+  useEffect(() => {
+    if (user?.email) {
+      fetch(`https://fin-ease-server-pi.vercel.app/summary?email=${user.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setTransactions(data);
+        });
+    }
+  }, [user]);
+  const { balance, income, expenses } = transactions;
   return (
     <div>
       <Hero></Hero>

@@ -96,21 +96,16 @@ const MyTransactions = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
+          const updatedTransactions = transactions.map((transaction) =>
+            transaction._id === selectedTransaction._id
+              ? { ...transaction, ...updatedTransaction }
+              : transaction,
+          );
 
-        const updatedTransactions = transactions.map((transaction) =>
-          transaction._id === selectedTransaction._id
-            ? { ...transaction, ...updatedTransaction }
-            : transaction
-        );
+          setTransactions(updatedTransactions);
 
-        setTransactions(updatedTransactions);
-
-        Swal.fire(
-          "Success!",
-          "Transaction updated successfully",
-          "success"
-        );
-    }
+          Swal.fire("Success!", "Transaction updated successfully", "success");
+        }
       });
 
     document.getElementById("my_modal_5").close();
@@ -160,7 +155,7 @@ const MyTransactions = () => {
                 Delete
               </button>
 
-              <Link to={`/transactions/${transaction._id}`}>
+              <Link to={`/details/${transaction._id}`}>
                 <button className="btn btn-sm btn-info">View Details</button>
               </Link>
             </div>

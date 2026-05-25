@@ -12,6 +12,7 @@ const Navbar = () => {
       <Link to={"/add-transaction"}>Add Transaction</Link>
       <Link to={"/my-transactions"}>My Transactions</Link>
       <Link to={"/reports"}>Reports</Link>
+      <Link to={"/profile"}>My Profile</Link>
     </>
   );
 
@@ -23,6 +24,7 @@ const Navbar = () => {
       .catch((err) => {
         console.log(err);
       });
+    window.location.reload();
   };
   return (
     <div className="navbar mt-5 w-11/12 mx-auto sticky top-0 z-50">

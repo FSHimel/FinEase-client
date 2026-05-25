@@ -8,6 +8,8 @@ import Reports from "../Pages/Reports";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Error from "../Pages/Error";
+import MyProfile from "../Pages/MyProfile";
+import ViewDetails from "../Pages/ViewDetails";
 
 const router = createBrowserRouter([
   {
@@ -18,12 +20,6 @@ const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
-        loader: async () => {
-          const res = await fetch(
-            "https://fin-ease-server-pi.vercel.app/summary",
-          );
-          return res.json();
-        },
       },
       {
         path: "signup",
@@ -38,6 +34,28 @@ const router = createBrowserRouter([
         element: (
           <PrivetRoute>
             <AddTransaction></AddTransaction>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <PrivetRoute>
+            <MyProfile></MyProfile>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "details/:id",
+        loader: async () => {
+          const res = await fetch(
+            "https://fin-ease-server-pi.vercel.app/transactions",
+          );
+          return res.json();
+        },
+        element: (
+          <PrivetRoute>
+            <ViewDetails></ViewDetails>
           </PrivetRoute>
         ),
       },
