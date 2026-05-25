@@ -3,6 +3,7 @@ import "./Navbar.css";
 import { use } from "react";
 import AuthContext from "../../Firebase/AuthContext";
 import Swal from "sweetalert2";
+import logo from "../../assets/logo.png";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
@@ -55,7 +56,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to={"/"} className="text-3xl font-black text-[#CF9893]">
-          FinEase
+          <img src={logo} alt="logo" className="w-35" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
